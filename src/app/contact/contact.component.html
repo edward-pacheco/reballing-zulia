@@ -1,0 +1,47 @@
+<div class="container-fluid" [ngClass]="sent==true? 'd-block': 'd-none'">
+    <form action="https://formsubmit.co/reballingzulia@gmail.com" method="POST" class="contact-form" [formGroup]="contactForm" (ngSubmit)="enviar(contactForm.value)">
+        <legend><h2>SOLICITA TU SERVICIO</h2></legend><br>
+        <input type="text" name='name' formControlName='name' title="Nombre solo acepta letras y espacios en blanco." placeholder="Escribe tu Nombre" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+        <span class='contact-form-error d-none'>Nombre solo acepta letras y espacios en blanco</span>
+        <input type='email' name='email' formControlName='email' title="Ingresa un Correo Electrónico válido." placeholder="Correo Electrónico" required>
+        <span class='contact-form-error d-none'>Correo Electrónico Incorrecto</span>
+        <select name="subject" id="subject" formControlName='subject' required>
+            <option value="" selected>Seleccione un Servicio</option>
+            <option value="Soporte Técnico">Soporte Técnico</option>
+            <option value="Diagnóstico de Fallas">Diagnóstico de Fallas</option>
+            <option value="Cortocircuitos">Cortocircuitos</option>
+            <option value="Baños Químicos">Baños Químicos</option>
+            <option value="Mantenimientos Preventivos">Mantenimientos Preventivos</option>
+            <option value="Reballing">Reballing</option>
+        </select>
+        <span class='contact-form-error d-none'>El Tipo de Servicio es requerido</span>
+        <textarea formControlName='comments' maxlength='255' name='comments' cols='50' rows='5' title='Tu comentario no debe exceder de 255 caracteres' placeholder="Escribe una breve descripción (máximo 255 caracteres)." required></textarea>
+        <button type='submit' [disabled]="contactForm.invalid" class="btn btn-primary" (click)="showModal()">Enviar</button>
+        <input type="hidden" name="_captcha" value="false">
+    </form>
+</div>
+
+<div class="modal text-center" [ngClass]="display? 'd-flex': 'd-none'" tabindex="-1" style="background-color:rgba(0,67,16, 0.4);">
+  <div class="modal-dialog m-auto">
+    <div class="modal-content">
+      <div class="modal-header " style="justify-content: center;">
+        <h5 class="modal-title">GRACIAS POR CONTACTANOS</h5>
+      </div>
+      <div class="modal-body">
+        <p>{{message}}</p>
+      </div>
+      <div class="modal-footer" style="justify-content: center;">
+        <button type="button" class="btn btn-success" (click)="showModal()">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" [ngClass]="!sent? 'd-block': 'd-none'">
+    <div class="row text-center" id='ngtemplate'>
+      <div class="col-12">
+        <h3>GRACIAS POR CONTACTANOS</h3>
+        <h5>Ya has enviado una solicitud!</h5>
+      </div>
+    </div>
+</div>

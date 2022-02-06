@@ -1,0 +1,10 @@
+#footer{
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #004310, #004320 25%, #004330);
+    color: #fff;
+}
+
+#footer li{
+    margin-right: 5px;
+}
